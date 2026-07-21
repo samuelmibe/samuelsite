@@ -1,17 +1,127 @@
 ---
+import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import photo from '../assets/samuel-mainpage-home.jpeg';
 
+const [nowEntry] = await getCollection('now');
+const { Content } = nowEntry ? await render(nowEntry) : { Content: null };
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+  <section class="wrap hero">
+    <Image src={photo} alt="Samuel" class="hero__photo" width={820} height={650} loading="eager" />
+    <p class="hero__intro muted">[Add a brief intro about yourself here.]</p>
+  </section>
+
+  {Content && (
+    <section class="wrap now">
+      <h2>now</h2>
+      <div class="now__content">
+        <Content />
+      </div>
+      <p class="now__updated muted">
+        Updated {nowEntry.data.updated.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}
+      </p>
+    </section>
+  )}
+
+  <section class="wrap links">
+    <a class="links__item" href="/photography">
+      <h3>Photography</h3>
+      <p class="muted">A portfolio of stills.</p>
+    </a>
+    <a class="links__item" href="/blog">
+      <h3>Blog</h3>
+      <p class="muted">Writing, occasionally.</p>
+    </a>
+    <a class="links__item" href="/cv">
+      <h3>CV</h3>
+      <p class="muted">Experience and background.</p>
+    </a>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding-block: var(--space-5) var(--space-4);
+  }
+
+  .hero__photo {
+    width: 20rem;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .hero__intro {
+    font-size: 1.15rem;
+    margin: 0;
+  }
+
+  @media (max-width: 40rem) {
+    .hero {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .now {
+    padding-block: var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .now__content :global(p:last-child),
+  .now__content :global(ul:last-child) {
+    margin-bottom: 0;
+  }
+
+  .now__content :global(li) {
+    margin-bottom: 0.35em;
+  }
+
+  .now__updated {
+    font-size: 0.85rem;
+    margin-top: var(--space-2);
+    margin-bottom: 0;
+  }
+
+  .links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+    padding-block: var(--space-4) var(--space-5);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .links__item {
+    text-decoration: none;
+    padding: var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    transition: border-color 0.15s ease;
+  }
+
+  .links__item:hover {
+    border-color: var(--color-accent);
+  }
+
+  .links__item h3 {
+    margin-bottom: var(--space-1);
+  }
+
+  .links__item p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 40rem) {
+    .links {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

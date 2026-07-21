@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Add real photos by dropping files into public/photography/ and adding
+// entries here with a src, e.g. { src: '/photography/01.jpg', alt: 'Description' }.
+// Entries without src render as placeholders.
+const photos = [
+  { src: null, alt: 'Placeholder' },
+  { src: null, alt: 'Placeholder' },
+  { src: null, alt: 'Placeholder' },
+  { src: null, alt: 'Placeholder' },
+  { src: null, alt: 'Placeholder' },
+  { src: null, alt: 'Placeholder' },
+];
+---
+
+<BaseLayout title="Photography" description="A photography portfolio.">
+  <section class="wrap wrap--wide intro">
+    <h1>Photography</h1>
+    <p class="muted">A selection of stills. More coming soon.</p>
+  </section>
+
+  <section class="wrap wrap--wide gallery">
+    {photos.map((photo) =>
+      photo.src ? (
+        <img class="gallery__item" src={photo.src} alt={photo.alt} loading="lazy" />
+      ) : (
+        <div class="gallery__item gallery__item--placeholder" role="img" aria-label={photo.alt}></div>
+      )
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    padding-block: var(--space-5) var(--space-4);
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+    padding-bottom: var(--space-5);
+  }
+
+  .gallery__item {
+    aspect-ratio: 4 / 5;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.25rem;
+  }
+
+  .gallery__item--placeholder {
+    background: linear-gradient(155deg, var(--color-border), var(--color-bg));
+  }
+
+  @media (max-width: 40rem) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

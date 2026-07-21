@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# raw source docs not part of the site
+Minev-Benzecry_CV_new.txt
