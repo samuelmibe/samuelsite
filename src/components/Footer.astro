@@ -7,6 +7,7 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="wrap wrap--wide site-footer__inner">
     <ul class="site-footer__socials">
+      <li>Email: {site.email}</li>
       {socials.map((s) => (
         <li><a href={s.href}>{s.label}</a></li>
       ))}

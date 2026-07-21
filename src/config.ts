@@ -3,6 +3,7 @@ export const site = {
   fullName: 'Samuel Minev-Benzecry',
   description: 'Samuel — photography, writing, and work.',
   url: 'https://samuelmb.com',
+  email: 'sammymb@pm.me',
 };
 
 export const nav = [
@@ -14,7 +15,6 @@ export const nav = [
 
 // Update these with real links whenever you have them.
 export const socials = [
-  { label: 'Email', href: 'mailto:sammymb@pm.me' },
   { label: 'Instagram', href: 'https://www.instagram.com/samyminev/' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/samuel-minev-benzecry-23166a18a/' },
 ];
