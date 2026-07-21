@@ -1,6 +1,6 @@
 ---
 name: Samuel Minev-Benzecry
-contact: '+1 (650) 433-6851 · samuelmb@stanford.edu · sammymb@pm.me · orcid.org/0009-0008-4921-2916'
+contact: 'samuelmb@stanford.edu · sammymb@pm.me · orcid.org/0009-0008-4921-2916'
 ---
 
 ## Education
@@ -62,9 +62,6 @@ contact: '+1 (650) 433-6851 · samuelmb@stanford.edu · sammymb@pm.me · orcid.o
 - Speaker, Face-Interface Conference (2024) — "[TALK TITLE]"
 - Speaker, UNICODE Technical Workshop (2024) — "[TALK TITLE]"
 - Mc nature
-
-## Grants & Funding
-- Collaborator, "Multicultural Scientific Dialogues on Sociobiodiversity in Amazonia with Bioeconomic Potential" – Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq).
 
 ## Honors & Awards
 - Ashoka Fellow (2021).

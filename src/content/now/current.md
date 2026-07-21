@@ -2,4 +2,6 @@
 updated: 2026-07-20
 ---
 
-[Add your current interests here.]
+- reading x y z
+- interested in bronze age vessels
+- hunting mushrooms

@@ -25,21 +25,6 @@ const { Content } = nowEntry ? await render(nowEntry) : { Content: null };
       </p>
     </section>
   )}
-
-  <section class="wrap links">
-    <a class="links__item" href="/photography">
-      <h3>Photography</h3>
-      <p class="muted">A portfolio of stills.</p>
-    </a>
-    <a class="links__item" href="/blog">
-      <h3>Blog</h3>
-      <p class="muted">Writing, occasionally.</p>
-    </a>
-    <a class="links__item" href="/cv">
-      <h3>CV</h3>
-      <p class="muted">Experience and background.</p>
-    </a>
-  </section>
 </BaseLayout>
 
 <style>
@@ -88,40 +73,5 @@ const { Content } = nowEntry ? await render(nowEntry) : { Content: null };
     font-size: 0.85rem;
     margin-top: var(--space-2);
     margin-bottom: 0;
-  }
-
-  .links {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-3);
-    padding-block: var(--space-4) var(--space-5);
-    border-top: 1px solid var(--color-border);
-  }
-
-  .links__item {
-    text-decoration: none;
-    padding: var(--space-3);
-    border: 1px solid var(--color-border);
-    border-radius: 0.5rem;
-    transition: border-color 0.15s ease;
-  }
-
-  .links__item:hover {
-    border-color: var(--color-accent);
-  }
-
-  .links__item h3 {
-    margin-bottom: var(--space-1);
-  }
-
-  .links__item p {
-    margin: 0;
-    font-size: 0.9rem;
-  }
-
-  @media (max-width: 40rem) {
-    .links {
-      grid-template-columns: 1fr;
-    }
   }
 </style>
