@@ -15,6 +15,6 @@ export const nav = [
 // Update these with real links whenever you have them.
 export const socials = [
   { label: 'Email', href: 'mailto:samuelminev@gmail.com' },
-  { label: 'Instagram', href: 'https://instagram.com/' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/' },
+  { label: 'Instagram', href: 'https://www.instagram.com/samyminev/' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/samuel-minev-benzecry-23166a18a/' },
 ];
