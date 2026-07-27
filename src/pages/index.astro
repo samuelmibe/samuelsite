@@ -6,6 +6,11 @@ import photo from '../assets/samuel-mainpage-home.jpeg';
 
 const [nowEntry] = await getCollection('now');
 const { Content } = nowEntry ? await render(nowEntry) : { Content: null };
+
+const [interestsEntry] = await getCollection('interests');
+const { Content: InterestsContent } = interestsEntry
+  ? await render(interestsEntry)
+  : { Content: null };
 ---
 
 <BaseLayout>
@@ -14,9 +19,18 @@ const { Content } = nowEntry ? await render(nowEntry) : { Content: null };
     <p class="hero__intro muted">[Add a brief intro about yourself here.]</p>
   </section>
 
+  {InterestsContent && (
+    <section class="wrap now">
+      <h2>general interests</h2>
+      <div class="now__content">
+        <InterestsContent />
+      </div>
+    </section>
+  )}
+
   {Content && (
     <section class="wrap now">
-      <h2>now</h2>
+      <h2>current fascinations</h2>
       <div class="now__content">
         <Content />
       </div>

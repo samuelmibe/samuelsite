@@ -18,6 +18,11 @@ const now = defineCollection({
   }),
 });
 
+const interests = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/interests' }),
+  schema: z.object({}),
+});
+
 const cv = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/cv' }),
   schema: z.object({
@@ -26,4 +31,4 @@ const cv = defineCollection({
   }),
 });
 
-export const collections = { blog, now, cv };
+export const collections = { blog, now, interests, cv };
