@@ -59,8 +59,8 @@ contact: 'samuelmb@stanford.edu · sammymb@pm.me · orcid.org/0009-0008-4921-291
 - Featured in national Brazilian media (piauí, Folha de São Paulo, G1).
 
 ## Presentations & Talks
-- Toral Cowieson, Maroua Bezzaoui, & Samuel Minev-Benzecry, "Empowering Voices: Lessons Learned and the Future of Inclusion for Digitally Disadvantaged Languages" — Face-Interface Conference (2024).
-- Speaker, UNICODE Technical Workshop (2024) — "[TALK TITLE]"
+- Toral Cowieson, Maroua Bezzaoui, & **Samuel Minev-Benzecry**, "Empowering Voices: Lessons Learned and the Future of Inclusion for Digitally Disadvantaged Languages" — Face-Interface Conference (2024).
+- **Samuel Minev-Benzecry** & Maroua Bezzaoui, "The Long Road to Digitalization: Lessons From a Summer Internship With Silicon-Unicode" — UNICODE Technical Workshop (2024).
 - Mc nature
 
 ## Honors & Awards
