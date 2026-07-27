@@ -15,7 +15,11 @@ contact: 'samuelmb@stanford.edu · sammymb@pm.me · orcid.org/0009-0008-4921-291
 
 **Peer-reviewed journal articles**
 - Pacheco, S., Titzer, C., Minev-Benzecry, S., & Song, H. (2025). Hawaiʻi's plantation employee records: A multidisciplinary exploration of Hawaiʻi's history. *The International Journal of Critical Cultural Studies*, 24(2), 171–192. https://doi.org/10.18848/2327-0055/CGP/v24i02/171-192
-- Minev-Benzecry, S., & Daru, B. H. (2024). Climate change alters the future of natural floristic regions of deep evolutionary origins. *Nature Communications*, 15, 9474. https://doi.org/10.1038/s41467-024-53860-8
+- Minev-Benzecry, S., & Daru, B. H. (2024). Climate change alters the future of natural floristic regions of deep evolutionary origins. *Nature Communications*, 15, Article 9474. https://doi.org/10.1038/s41467-024-53860-8
+
+**Book contributions**
+- Vargas-Isla, R., Minev-Benzecry, S., Lima, M. C., Soares, C. C. B., Leite, L. C. C., Cabral, T. S., Sampaio, L. S., Oliveira, J. J. S., Bruno, A. C., & Ishikawa, N. K. (2026). *Série Mycelia: Álbum de cogumelos para micoturismo, Volume 7: Museu da Amazônia* [Mycelia series: Mushroom album for mycotourism, Volume 7: Museum of the Amazon]. Editora INPA. https://doi.org/10.61818/56330891
+- Minev-Benzecry, S. (2024). Prefácio [Preface]. In R. Vargas-Isla, L. C. C. Leite, T. S. Cabral, J. J. S. Oliveira, R. F. Pereira, & N. K. Ishikawa, *Série Mycelia: Álbum de cogumelos para micoturismo, Vol. 3: Micodiversidade de cogumelos comestíveis da Amazônia* (pp. 8–9). Editora INPA.
 
 ## Research Experience
 
