@@ -1,33 +1,55 @@
 ---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-// Add real photos by dropping files into public/photography/ and adding
-// entries here with a src, e.g. { src: '/photography/01.jpg', alt: 'Description' }.
-// Entries without src render as placeholders.
-const photos = [
-  { src: null, alt: 'Placeholder' },
-  { src: null, alt: 'Placeholder' },
-  { src: null, alt: 'Placeholder' },
-  { src: null, alt: 'Placeholder' },
-  { src: null, alt: 'Placeholder' },
-  { src: null, alt: 'Placeholder' },
-];
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/photography/**/*.{jpeg,jpg,png,JPEG,JPG,PNG}',
+  { eager: true }
+);
+
+function coverFor(id: string) {
+  const entry = Object.entries(allImages)
+    .filter(([path]) => path.includes(`/photography/${id}/`))
+    .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))[0];
+  return entry ? entry[1].default : null;
+}
+
+const collections = (await getCollection('photography')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
 ---
 
 <BaseLayout title="Photography" description="A photography portfolio.">
   <section class="wrap wrap--wide intro">
-    <h1>Photography</h1>
-    <p class="muted">A selection of stills. More coming soon.</p>
+    <h1>photography</h1>
+    <p class="muted">a selection of past series, collections</p>
   </section>
 
-  <section class="wrap wrap--wide gallery">
-    {photos.map((photo) =>
-      photo.src ? (
-        <img class="gallery__item" src={photo.src} alt={photo.alt} loading="lazy" />
-      ) : (
-        <div class="gallery__item gallery__item--placeholder" role="img" aria-label={photo.alt}></div>
-      )
-    )}
+  <section class="wrap wrap--wide collections">
+    {collections.length === 0 && <p class="muted">Nothing here yet.</p>}
+    {collections.map((c) => {
+      const cover = coverFor(c.id);
+      return (
+        <a class="collection" href={`/photography/${c.id}/`}>
+          {cover ? (
+            <Image
+              class="collection__cover"
+              src={cover}
+              alt={c.data.title}
+              widths={[400, 800]}
+              sizes="(max-width: 40rem) 100vw, 32rem"
+              format="webp"
+              quality={80}
+              loading="lazy"
+            />
+          ) : (
+            <div class="collection__cover collection__cover--placeholder"></div>
+          )}
+          <h2 class="collection__title">{c.data.title}</h2>
+        </a>
+      );
+    })}
   </section>
 </BaseLayout>
 
@@ -36,27 +58,42 @@ const photos = [
     padding-block: var(--space-5) var(--space-4);
   }
 
-  .gallery {
+  .collections {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-2);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
     padding-bottom: var(--space-5);
   }
 
-  .gallery__item {
-    aspect-ratio: 4 / 5;
+  .collection {
+    text-decoration: none;
+    display: block;
+  }
+
+  .collection__cover {
+    aspect-ratio: 3 / 2;
     width: 100%;
     object-fit: cover;
     border-radius: 0.25rem;
+    margin-bottom: var(--space-2);
   }
 
-  .gallery__item--placeholder {
+  .collection__cover--placeholder {
     background: linear-gradient(155deg, var(--color-border), var(--color-bg));
   }
 
+  .collection__title {
+    font-size: 1.15rem;
+    margin: 0;
+  }
+
+  .collection:hover .collection__title {
+    color: var(--color-accent);
+  }
+
   @media (max-width: 40rem) {
-    .gallery {
-      grid-template-columns: repeat(2, 1fr);
+    .collections {
+      grid-template-columns: 1fr;
     }
   }
 </style>

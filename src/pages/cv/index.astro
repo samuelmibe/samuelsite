@@ -6,7 +6,7 @@ const [cvEntry] = await getCollection('cv');
 const { Content } = await render(cvEntry);
 ---
 
-<BaseLayout title="CV" description={`CV — ${cvEntry.data.name}`}>
+<BaseLayout title="CV" description={`CV — ${cvEntry.data.name}`} lowercase={false}>
   <section class="wrap cv">
     <header class="cv__header">
       <h1>{cvEntry.data.name}</h1>

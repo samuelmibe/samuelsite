@@ -1,0 +1,90 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Eagerly import every photo under src/assets/photography/**.
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/photography/**/*.{jpeg,jpg,png,JPEG,JPG,PNG}',
+  { eager: true }
+);
+
+function imagesFor(id: string) {
+  return Object.entries(allImages)
+    .filter(([path]) => path.includes(`/photography/${id}/`))
+    .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
+    .map(([, mod]) => mod.default);
+}
+
+export async function getStaticPaths() {
+  const collections = await getCollection('photography');
+  return collections.map((c) => ({
+    params: { slug: c.id },
+    props: { collection: c },
+  }));
+}
+
+const { collection } = Astro.props;
+const { title, description } = collection.data;
+const photos = imagesFor(collection.id);
+---
+
+<BaseLayout title={title} description={description || title}>
+  <section class="wrap wrap--wide intro">
+    <p class="back"><a href="/photography">&larr; photography</a></p>
+    <h1>{title}</h1>
+    {description && <p class="muted">{description}</p>}
+  </section>
+
+  <section class="wrap wrap--wide gallery">
+    {photos.length === 0 && <p class="muted">Photos coming soon.</p>}
+    {photos.map((photo, i) => (
+      <Image
+        class="gallery__item"
+        src={photo}
+        alt={`${title} — ${i + 1}`}
+        widths={[300, 480, 640]}
+        sizes="(max-width: 40rem) 50vw, 20rem"
+        format="webp"
+        quality={80}
+        loading={i < 4 ? 'eager' : 'lazy'}
+      />
+    ))}
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    padding-block: var(--space-4) var(--space-3);
+  }
+
+  .back {
+    margin-bottom: var(--space-2);
+  }
+
+  .back a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+    gap: var(--space-2);
+    padding-bottom: var(--space-5);
+  }
+
+  .gallery__item {
+    width: 100%;
+    height: auto;
+    border-radius: 0.25rem;
+  }
+
+  @media (max-width: 40rem) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

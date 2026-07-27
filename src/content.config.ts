@@ -31,4 +31,15 @@ const cv = defineCollection({
   }),
 });
 
-export const collections = { blog, now, interests, cv };
+const photography = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/photography' }),
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    description: z.string().optional(),
+    // Photos live in src/assets/photography/<id>/ and are picked up
+    // automatically (sorted by filename), then optimized at build time.
+  }),
+});
+
+export const collections = { blog, now, interests, cv, photography };
