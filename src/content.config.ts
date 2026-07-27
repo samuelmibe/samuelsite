@@ -39,6 +39,8 @@ const photography = defineCollection({
     description: z.string().optional(),
     // Photos live in src/assets/photography/<id>/ and are picked up
     // automatically (sorted by filename), then optimized at build time.
+    // `titles` are the per-photo captions, in the same order as the files.
+    titles: z.array(z.string()).default([]),
   }),
 });
 

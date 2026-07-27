@@ -1,9 +1,8 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-// Eagerly import every photo under src/assets/photography/**.
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
   '/src/assets/photography/**/*.{jpeg,jpg,png,JPEG,JPG,PNG}',
   { eager: true }
@@ -25,8 +24,16 @@ export async function getStaticPaths() {
 }
 
 const { collection } = Astro.props;
-const { title, description } = collection.data;
+const { title, description, titles } = collection.data;
 const photos = imagesFor(collection.id);
+
+// Build slides: a larger optimized image + its caption, for the lightbox.
+const slides = await Promise.all(
+  photos.map(async (photo, i) => {
+    const big = await getImage({ src: photo, width: 1800, format: 'webp' });
+    return { src: big.src, title: titles[i] ?? `${title} — ${i + 1}` };
+  })
+);
 ---
 
 <BaseLayout title={title} description={description || title}>
@@ -39,19 +46,89 @@ const photos = imagesFor(collection.id);
   <section class="wrap wrap--wide gallery">
     {photos.length === 0 && <p class="muted">Photos coming soon.</p>}
     {photos.map((photo, i) => (
-      <Image
+      <button
         class="gallery__item"
-        src={photo}
-        alt={`${title} — ${i + 1}`}
-        widths={[300, 480, 640]}
-        sizes="(max-width: 40rem) 50vw, 20rem"
-        format="webp"
-        quality={80}
-        loading={i < 4 ? 'eager' : 'lazy'}
-      />
+        data-index={i}
+        data-full={slides[i].src}
+        data-title={slides[i].title}
+        aria-label={`Open: ${slides[i].title}`}
+      >
+        <Image
+          class="gallery__thumb"
+          src={photo}
+          alt={slides[i].title}
+          widths={[300, 480, 640]}
+          sizes="(max-width: 40rem) 50vw, 20rem"
+          format="webp"
+          quality={80}
+          loading={i < 4 ? 'eager' : 'lazy'}
+        />
+      </button>
     ))}
   </section>
+
+  <div id="lightbox" class="lightbox" hidden>
+    <button class="lightbox__close" aria-label="Close">&times;</button>
+    <button class="lightbox__nav lightbox__prev" aria-label="Previous photo">&#8249;</button>
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" src="" alt="" />
+      <figcaption class="lightbox__caption"></figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__next" aria-label="Next photo">&#8250;</button>
+  </div>
 </BaseLayout>
+
+<script>
+  const lb = document.getElementById('lightbox');
+  if (lb) {
+    const img = lb.querySelector('.lightbox__img') as HTMLImageElement;
+    const cap = lb.querySelector('.lightbox__caption') as HTMLElement;
+    const items = Array.from(
+      document.querySelectorAll<HTMLButtonElement>('.gallery__item')
+    );
+    const slides = items.map((el) => ({
+      src: el.dataset.full || '',
+      title: el.dataset.title || '',
+    }));
+    let idx = 0;
+
+    function show(i: number) {
+      idx = (i + slides.length) % slides.length;
+      img.src = slides[idx].src;
+      img.alt = slides[idx].title;
+      cap.textContent = slides[idx].title;
+    }
+    function open(i: number) {
+      show(i);
+      lb!.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      lb!.hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    items.forEach((el, i) => el.addEventListener('click', () => open(i)));
+    lb.querySelector('.lightbox__next')!.addEventListener('click', (e) => {
+      e.stopPropagation();
+      show(idx + 1);
+    });
+    lb.querySelector('.lightbox__prev')!.addEventListener('click', (e) => {
+      e.stopPropagation();
+      show(idx - 1);
+    });
+    lb.querySelector('.lightbox__close')!.addEventListener('click', close);
+    lb.addEventListener('click', (e) => {
+      if (e.target === lb) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (lb.hidden) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowRight') show(idx + 1);
+      if (e.key === 'ArrowLeft') show(idx - 1);
+    });
+  }
+</script>
 
 <style>
   .intro {
@@ -77,14 +154,103 @@ const photos = imagesFor(collection.id);
   }
 
   .gallery__item {
+    display: block;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+
+  .gallery__thumb {
     width: 100%;
     height: auto;
-    border-radius: 0.25rem;
+    display: block;
+    transition: opacity 0.15s ease;
+  }
+
+  .gallery__item:hover .gallery__thumb {
+    opacity: 0.85;
   }
 
   @media (max-width: 40rem) {
     .gallery {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    background: rgba(0, 0, 0, 0.92);
+  }
+
+  .lightbox[hidden] {
+    display: none;
+  }
+
+  .lightbox__figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    max-width: min(90vw, 60rem);
+  }
+
+  .lightbox__img {
+    max-width: 100%;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .lightbox__caption {
+    color: #f2f0ea;
+    font-size: 0.95rem;
+    text-align: center;
+    text-transform: lowercase;
+  }
+
+  .lightbox__nav,
+  .lightbox__close {
+    background: none;
+    border: 0;
+    color: #f2f0ea;
+    cursor: pointer;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .lightbox__nav {
+    font-size: 3rem;
+    padding: var(--space-2);
+  }
+
+  .lightbox__nav:hover {
+    color: #fff;
+  }
+
+  .lightbox__close {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-3);
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 40rem) {
+    .lightbox__nav {
+      font-size: 2rem;
+      padding: var(--space-1);
     }
   }
 </style>

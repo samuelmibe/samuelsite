@@ -32,20 +32,19 @@ const collections = (await getCollection('photography')).sort(
       const cover = coverFor(c.id);
       return (
         <a class="collection" href={`/photography/${c.id}/`}>
-          {cover ? (
-            <Image
-              class="collection__cover"
-              src={cover}
-              alt={c.data.title}
-              widths={[400, 800]}
-              sizes="(max-width: 40rem) 100vw, 32rem"
-              format="webp"
-              quality={80}
-              loading="lazy"
-            />
-          ) : (
-            <div class="collection__cover collection__cover--placeholder"></div>
-          )}
+          <div class:list={['collection__cover', { 'collection__cover--placeholder': !cover }]}>
+            {cover && (
+              <Image
+                src={cover}
+                alt={c.data.title}
+                widths={[300, 600]}
+                sizes="18rem"
+                format="webp"
+                quality={80}
+                loading="lazy"
+              />
+            )}
+          </div>
           <h2 class="collection__title">{c.data.title}</h2>
         </a>
       );
@@ -60,7 +59,7 @@ const collections = (await getCollection('photography')).sort(
 
   .collections {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-4);
     padding-bottom: var(--space-5);
   }
@@ -68,14 +67,21 @@ const collections = (await getCollection('photography')).sort(
   .collection {
     text-decoration: none;
     display: block;
+    max-width: 18rem;
   }
 
   .collection__cover {
     aspect-ratio: 3 / 2;
     width: 100%;
-    object-fit: cover;
+    overflow: hidden;
     border-radius: 0.25rem;
     margin-bottom: var(--space-2);
+  }
+
+  .collection__cover :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .collection__cover--placeholder {
@@ -91,7 +97,13 @@ const collections = (await getCollection('photography')).sort(
     color: var(--color-accent);
   }
 
-  @media (max-width: 40rem) {
+  @media (max-width: 52rem) {
+    .collections {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 34rem) {
     .collections {
       grid-template-columns: 1fr;
     }
