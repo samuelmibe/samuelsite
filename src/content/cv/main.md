@@ -59,7 +59,7 @@ contact: 'samuelmb@stanford.edu · sammymb@pm.me · orcid.org/0009-0008-4921-291
 - Featured in national Brazilian media (piauí, Folha de São Paulo, G1).
 
 ## Presentations & Talks
-- Speaker, Face-Interface Conference (2024) — "[TALK TITLE]"
+- Toral Cowieson, Maroua Bezzaoui, & Samuel Minev-Benzecry, "Empowering Voices: Lessons Learned and the Future of Inclusion for Digitally Disadvantaged Languages" — Face-Interface Conference (2024).
 - Speaker, UNICODE Technical Workshop (2024) — "[TALK TITLE]"
 - Mc nature
 
