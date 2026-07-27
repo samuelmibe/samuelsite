@@ -59,11 +59,7 @@ h4 {
 }
 
 /* Lowercase aesthetic everywhere except pages that opt out (e.g. the CV). */
-body.lc h1,
-body.lc h2,
-body.lc h3,
-body.lc h4,
-body.lc .site-header__title {
+body.lc {
   text-transform: lowercase;
 }
 
