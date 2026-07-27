@@ -61,7 +61,7 @@ contact: 'samuelmb@stanford.edu · sammymb@pm.me · orcid.org/0009-0008-4921-291
 ## Presentations & Talks
 - Toral Cowieson, Maroua Bezzaoui, & **Samuel Minev-Benzecry**, "Empowering Voices: Lessons Learned and the Future of Inclusion for Digitally Disadvantaged Languages" — Face-Interface Conference (2024).
 - **Samuel Minev-Benzecry** & Maroua Bezzaoui, "The Long Road to Digitalization: Lessons From a Summer Internship With Silicon-Unicode" — UNICODE Technical Workshop (2024).
-- Mc nature
+- Master of Ceremonies, 1st Nature-based Education Summit (May 4, 2024) — hosted by The Alana Foundation and the UCLA School of Education & Information Studies, in partnership with the IUCN Commission on Education and Communication (CEC), #NatureForAll, and EARTHDAY.ORG.
 
 ## Honors & Awards
 - Ashoka Fellow (2021).
