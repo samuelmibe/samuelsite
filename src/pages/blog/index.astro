@@ -9,12 +9,12 @@ const posts = (await getCollection('blog', ({ data }) => !isProd || !data.draft)
 ---
 
 <BaseLayout title="Blog" description="Writing from Samuel.">
-  <section class="wrap intro">
-    <h1>Blog</h1>
+  <section class="wrap wrap--wide intro">
+    <h1>blog/writings</h1>
   </section>
 
-  <section class="wrap posts">
-    {posts.length === 0 && <p class="muted">No posts yet.</p>}
+  <section class="wrap wrap--wide posts">
+    {posts.length === 0 && <p class="muted">coming soon.</p>}
     <ul class="posts__list">
       {posts.map((post) => (
         <li class="posts__item">

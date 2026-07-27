@@ -7,7 +7,7 @@ const { Content } = await render(cvEntry);
 ---
 
 <BaseLayout title="CV" description={`CV — ${cvEntry.data.name}`} lowercase={false}>
-  <section class="wrap cv">
+  <section class="wrap wrap--wide cv">
     <header class="cv__header">
       <h1>{cvEntry.data.name}</h1>
       <p class="muted cv__contact">{cvEntry.data.contact}</p>

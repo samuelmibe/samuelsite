@@ -15,7 +15,7 @@ const { Content } = await render(post);
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
-  <article class="wrap post">
+  <article class="wrap wrap--wide post">
     <h1>{post.data.title}</h1>
     <p class="muted post__date">
       {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}
