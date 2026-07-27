@@ -8,9 +8,9 @@ export const site = {
 
 export const nav = [
   { href: '/', label: 'home' },
-  { href: '/photography', label: 'photography' },
   { href: '/cv', label: 'cv' },
   { href: '/blog', label: 'blog/writings' },
+  { href: '/photography', label: 'photography' },
 ];
 
 // Update these with real links whenever you have them.

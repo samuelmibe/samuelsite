@@ -14,29 +14,35 @@ const { Content: InterestsContent } = interestsEntry
 ---
 
 <BaseLayout>
-  <section class="wrap hero">
+  <section class="wrap wrap--wide hero">
     <Image src={photo} alt="Samuel" class="hero__photo" width={822} height={652} loading="eager" />
     <p class="hero__intro muted">Hello! I am Samuel Minev-Benzecry, a recent graduate of Stanford University, where I double majored in Earth Systems and Linguistics, minored in History, and received Honors in the Arts. I am currently pursuing my Master's in Earth Systems, also at Stanford, with a focus on Agroforestry. This summer, I am based in Manaus, Brazil, where I am doing research for my thesis, working on language inclusion projects, and catching up on reading and organization of personal files and objects. Always an email away!</p>
   </section>
 
-  {InterestsContent && (
-    <section class="wrap now">
-      <h2>general interests</h2>
-      <div class="now__content">
-        <InterestsContent />
-      </div>
-    </section>
-  )}
+  {(InterestsContent || Content) && (
+    <section class="wrap wrap--wide now">
+      <div class="now-grid">
+        {InterestsContent && (
+          <div class="now-col">
+            <h2>general interests</h2>
+            <div class="now__content">
+              <InterestsContent />
+            </div>
+          </div>
+        )}
 
-  {Content && (
-    <section class="wrap now">
-      <h2>current fascinations</h2>
-      <div class="now__content">
-        <Content />
+        {Content && (
+          <div class="now-col">
+            <h2>current fascinations</h2>
+            <div class="now__content">
+              <Content />
+            </div>
+            <p class="now__updated muted">
+              Updated {nowEntry.data.updated.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}
+            </p>
+          </div>
+        )}
       </div>
-      <p class="now__updated muted">
-        Updated {nowEntry.data.updated.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}
-      </p>
     </section>
   )}
 </BaseLayout>
@@ -44,8 +50,8 @@ const { Content: InterestsContent } = interestsEntry
 <style>
   .hero {
     display: flex;
-    align-items: center;
-    gap: var(--space-3);
+    align-items: flex-start;
+    gap: var(--space-4);
     padding-block: var(--space-5) var(--space-4);
   }
 
@@ -58,7 +64,9 @@ const { Content: InterestsContent } = interestsEntry
   }
 
   .hero__intro {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: min(38rem, 100%);
     margin: 0;
   }
 
@@ -72,6 +80,19 @@ const { Content: InterestsContent } = interestsEntry
   .now {
     padding-block: var(--space-4);
     border-top: 1px solid var(--color-border);
+  }
+
+  .now-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5);
+  }
+
+  @media (max-width: 40rem) {
+    .now-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
   }
 
   .now__content :global(p:last-child),
