@@ -68,6 +68,7 @@ contact: 'samuelmb@stanford.edu · sammymb@pm.me · orcid.org/0009-0008-4921-291
 - Master of Ceremonies, 1st Nature-based Education Summit (May 4, 2024) — hosted by The Alana Foundation and the UCLA School of Education & Information Studies, in partnership with the IUCN Commission on Education and Communication (CEC), #NatureForAll, and EARTHDAY.ORG.
 
 ## Honors & Awards
+- Julie Kennedy Public Service Scholar Award (2026).
 - Ashoka Fellow (2021).
 - Gold Medal (2021) and Bronze Medal (2020), Brazilian Linguistics Olympiad (OBLing).
 
