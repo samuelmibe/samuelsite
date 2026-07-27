@@ -23,12 +23,12 @@ contact: 'samuelmb@stanford.edu · sammymb@pm.me · orcid.org/0009-0008-4921-291
 
 ## Research Experience
 
+**King Center on Global Development, Stanford University** — Research Assistant · Fall 2025 – Spring 2026
+- Working under Prof. Nicole Ardoin and Lily Coburn on social-ecological trade-offs in the Bolivian Amazonia, focusing on Commodity History of El Beni and its implications on future trends affecting socio-environmental questions in the region.
+
 **Daru Lab, Stanford University** — Research Assistant · Summer 2023 – Fall 2024
 - First-authored the *Nature Communications* paper above; modeled distributions of ~189,000 vascular plant species under present and future climates to map how climate change reshapes global floristic regions.
 - Built macroecological databases characterizing plants in the Anthropocene.
-
-**King Center on Global Development, Stanford University** — Research Assistant · Fall 2025 – Spring 2026
-- Working under Prof. Nicole Ardoin and Lily Coburn on social-ecological trade-offs in the Bolivian Amazonia, focusing on Commodity History of El Beni and its implications on future trends affecting socio-environmental questions in the region.
 
 **Peay Lab, Stanford University** — Research Assistant · Winter – Summer 2023
 - Investigated mycorrhizal associations in Amazonian plant roots.
