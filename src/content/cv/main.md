@@ -6,9 +6,9 @@ contact: 'samuelmb@stanford.edu · sammymb@pm.me · orcid.org/0009-0008-4921-291
 ## Education
 
 **Stanford University** — Coterminal B.A.S. + M.S., 2022–2027
-- M.S., Earth Systems – expected Spring 2027. GPA 3.914
+- M.S., Earth Systems – expected Spring 2027.
   - Thesis: In progress. Advisor: Zephyr Frank.
-- B.A.S., Linguistics & Earth Systems (Sustainable Food & Agriculture); Minor in History; Interdisciplinary Honor in the Arts – conferred Spring 2026. GPA 3.541
+- B.A.S., Linguistics & Earth Systems (Sustainable Food & Agriculture); Minor in History; Interdisciplinary Honor in the Arts – conferred Spring 2026.
   - Extracurriculars: President, Stanford Film Society; Photographer, MINT Magazine; Community & Culture, OnCall Café; International Mentor, Stanford International Mentors at Bechtel; Founding Member, Explore Energy House; Member, Stanford DJ Society.
 
 ## Publications
