@@ -1,7 +1,5 @@
 ---
 import { site, socials } from '../config';
-
-const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
@@ -12,7 +10,6 @@ const year = new Date().getFullYear();
         <li><a href={s.href}>{s.label}</a></li>
       ))}
     </ul>
-    <p class="muted site-footer__copy">&copy; {year} {site.fullName}</p>
   </div>
 </footer>
 
@@ -40,6 +37,7 @@ const year = new Date().getFullYear();
     padding: 0;
   }
 
+  .site-footer__socials li,
   .site-footer__socials a {
     text-decoration: none;
     font-size: 0.9rem;
@@ -48,10 +46,5 @@ const year = new Date().getFullYear();
 
   .site-footer__socials a:hover {
     color: var(--color-accent);
-  }
-
-  .site-footer__copy {
-    font-size: 0.85rem;
-    margin: 0;
   }
 </style>
