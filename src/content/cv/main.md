@@ -21,6 +21,11 @@ contact: 'samuelmb@stanford.edu · sammymb@pm.me · orcid.org/0009-0008-4921-291
 - Vargas-Isla, R., Minev-Benzecry, S., Lima, M. C., Soares, C. C. B., Leite, L. C. C., Cabral, T. S., Sampaio, L. S., Oliveira, J. J. S., Bruno, A. C., & Ishikawa, N. K. (2026). *Série Mycelia: Álbum de cogumelos para micoturismo, Volume 7: Museu da Amazônia* [Mycelia series: Mushroom album for mycotourism, Volume 7: Museum of the Amazon]. Editora INPA. https://doi.org/10.61818/56330891
 - Minev-Benzecry, S. (2024). Prefácio [Preface]. In R. Vargas-Isla, L. C. C. Leite, T. S. Cabral, J. J. S. Oliveira, R. F. Pereira, & N. K. Ishikawa, *Série Mycelia: Álbum de cogumelos para micoturismo, Vol. 3: Micodiversidade de cogumelos comestíveis da Amazônia* (pp. 8–9). Editora INPA.
 
+## Teaching Experience
+
+**BIO 179/279: The Science & Practice of Valuing Nature for a Better World, Stanford University** — Teaching Assistant · Fall 2026
+- Teaching assistant for BIO 179/279; assisting in grading and organization of classes.
+
 ## Research Experience
 
 **King Center on Global Development, Stanford University** — Research Assistant · Fall 2025 – Spring 2026
